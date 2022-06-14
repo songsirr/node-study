@@ -1,0 +1,12 @@
+"use strict";
+exports.createTemplate=`INSERT INTO template (id, name) VALUES (?, ?);`;
+exports.getTemplate=`SELECT id, name FROM template WHERE deleted_at IS NULL`;
+exports.findById=` AND id = ? `;
+exports.findByName=` AND name like ? `;
+exports.updateTemplate=`UPDATE template SET name = ? WHERE id = ?;`;
+exports.softDeleteTemplate=`UPDATE template SET deleted_at = NOW() WHERE id = ?;`;
+exports.hardDeleteTemplate=`DELETE FROM template WHERE id = ?;`;
+exports.addToCategory=`INSERT INTO category_template (category_id, template_id) VALUES ?;`;
+exports.softRemoveFromCategory=`UPDATE category_template SET deleted_at = NOW() WHERE category_id = ? AND template_id = ?;`;
+exports.softRemoveFromCategory=`UPDATE category_template SET deleted_at = NOW() WHERE category_id = ? AND template_id = ?;`;
+exports.softRemoveAllFromCategory=`UPDATE category_template SET deleted_at = NOW() WHERE template_id = ?;`;
